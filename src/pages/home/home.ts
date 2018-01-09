@@ -9,11 +9,12 @@ import {AngularFireDatabase} from "angularfire2/database";
 export class HomePage {
 
   lastLocation;
+  locations = [];
 
   constructor(public navCtrl: NavController, private afDB: AngularFireDatabase) {
     this.afDB.list('a840418').valueChanges().subscribe((data) => {
-      console.log(data[data.length-1]);
       this.lastLocation = data[data.length-1];
+      this.locations = data.reverse();
     });
   }
 
