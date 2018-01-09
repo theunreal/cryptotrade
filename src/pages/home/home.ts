@@ -12,8 +12,8 @@ export class HomePage {
 
   constructor(public navCtrl: NavController, private afDB: AngularFireDatabase) {
     this.afDB.list('a840418').valueChanges().subscribe((data) => {
-      console.log(data[0]);
-      this.lastLocation = data[0];
+      console.log(data[data.length-1]);
+      this.lastLocation = data[data.length-1];
     });
   }
 
