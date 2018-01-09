@@ -1,6 +1,6 @@
 {
   "name": "cryptotrade",
-  "app_id": "",
+  "app_id": "966c9465",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}

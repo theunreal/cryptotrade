@@ -1,11 +1,20 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      מסחר מטבעות בישראל
+    MAPVIEW
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  רשימת בקשות מאנשים
+  <section *ngIf="lastLocation">
+    <agm-map [latitude]="lastLocation.latitude"
+             [zoom]="12"
+             [longitude]="lastLocation.longtitude">
+      <agm-marker [latitude]="lastLocation.latitude"
+                  [longitude]="lastLocation.longtitude"
+
+      ></agm-marker>
+    </agm-map>
+  </section>
 </ion-content>
