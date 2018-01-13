@@ -6,18 +6,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import {AngularFireDatabase, AngularFireDatabaseModule} from "angularfire2/database";
-import {AngularFireModule} from "angularfire2";
-import {AgmCoreModule} from "@agm/core";
-
-export const environment = {
-    apiKey: "AIzaSyDlJyFePoqH4SbCLNnGgwNiNowlg60oHQM",
-    authDomain: "nodemucu-10c05.firebaseapp.com",
-    databaseURL: "https://nodemucu-10c05.firebaseio.com",
-    projectId: "nodemucu-10c05",
-    storageBucket: "nodemucu-10c05.appspot.com",
-    messagingSenderId: "836455838403"
-};
+import {AngularFireDatabase} from "angularfire2/database";
+import { TradeProvider } from '../providers/trade/trade';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -27,11 +18,7 @@ export const environment = {
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(environment),
-    AngularFireDatabaseModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyANwidADOtUqQg_euY7qsEXeks2lVcdSd4'
-    })
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -42,7 +29,8 @@ export const environment = {
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AngularFireDatabase
+    AngularFireDatabase,
+    TradeProvider
   ]
 })
 export class AppModule {}

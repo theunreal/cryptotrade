@@ -1,35 +1,18 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-    MAPVIEW
+      מסחר במטבעות
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <section *ngIf="lastLocation">
-    <agm-map [latitude]="lastLocation.latitude"
-             [zoom]="12"
-             [longitude]="lastLocation.longtitude">
-      <agm-marker [latitude]="lastLocation.latitude"
-                  [longitude]="lastLocation.longtitude"
 
-      ></agm-marker>
-      <agm-polyline [strokeColor]="'#2196f3'">
-          <agm-polyline-point
-            *ngFor="let location of locations"
-            [latitude]="location.latitude"
-            [longitude]="location.longtitude">
-          </agm-polyline-point>
-      </agm-polyline>
-    </agm-map>
+  <ion-list *ngIf="trades | async as trades">
+    <ion-item *ngFor="let trade of trades">
+      <h2>{{trade.user_id.first_name}}</h2>
+      <h3>{{trade.crypto_from.short_name}} -> {{trade.crypto_to.short_name}}</h3>
 
-    <ion-list>
-      <ion-item>
-        <ion-icon name="locate" item-start></ion-icon>
-        {{lastLocation.latitude}}, {{lastLocation.longtitude}}<br/>
-        RSSI: {{lastLocation.Rssi}}
-      </ion-item>
-    </ion-list>
-  </section>
+    </ion-item>
+  </ion-list>
 </ion-content>
